@@ -1,0 +1,5 @@
+run:
+  ./manage.py runserver
+
+collectstatic:
+  ./manage.py collectstatic
