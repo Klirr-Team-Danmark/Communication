@@ -24,4 +24,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.Main.as_view(), name="index"),
     path("chatroom", include("chatroom.urls")),
+    path("decision_log/", include("decisionlog.urls")),
 ]
