@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="da">
 <head>
@@ -7,7 +9,6 @@
   <link href="/static/pico.min.css" rel="stylesheet">
   <link href="/static/custom.css" rel="stylesheet" media="screen">
   {% block stylesheets %}{% endblock %}
-  <script src="/static/htmx.min.js"></script>
   <script src="/static/custom.js"></script>
   {% block head_javascripts %}{% endblock %}
 </head>
@@ -15,12 +16,16 @@
   {% block javascripts %}{% endblock %}
   <nav>
     <ul>
+      <li><a href="/">Home</a></li>
       <li><a href="">Decision log</a></li>
-      <li><a href="">Chat room</a></li>
+      <li><a href="{% url "chat_index" %}">Chat room</a></li>
     </ul>
   </nav>
   <main>
+    <h1>{% block page_title %}{% endblock %}</h1>
+
     {% block main %}{% endblock %}
+    <script src="/static/htmx.min.js"></script>
   </main>
 </body>
 </html>

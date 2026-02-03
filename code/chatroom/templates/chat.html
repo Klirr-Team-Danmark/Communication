@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block stylesheets %}
+<link href="{% static "chat.css" %}" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block page_title %}Chat room{% endblock %}
+
+{% block main %}
+  <article>
+    {% for c in chat_history %}
+      {{c.posted}} {{c.author}} {{c.content}}
+    {% endfor %}
+  </article>
+  <form>
+    <p>Type your message:</p>
+    {{form.content}}
+  </form>
+{% endblock %}
