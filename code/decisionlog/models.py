@@ -10,3 +10,6 @@ class DecisionLogEntry(models.Model):
 
     class Meta:
         ordering = ["created_time"]
+
+    def __str__(self):
+        return f"{self.author} at {self.created_time}"
