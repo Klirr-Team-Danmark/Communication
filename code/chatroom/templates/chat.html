@@ -3,27 +3,24 @@
 {% load static %}
 
 {% block main %}
-  <article>
-    {% for c in object_list %}
-    <div>
-      <span style="padding-right: 15px;">{{c.posted|date:'G:i:s'}}</span>
-      <strong>{{c.author}}:</strong>
-      {{c.content}}
-    </div>
-    {% endfor %}
+  <article id="message-list">
+    {% include "message_list.html" %}
   </article>
-  <p>You're chatting as <strong id="username"></strong></p>
-  <form>
-    <p>Type your message:</p>
-    <input name="message" hx-post="{#{% url 'file_archive_update' author.uid %}#}" hx-on:keydown="(event.keyCode===13&&!event.shiftKey)?event.preventDefault():null">
-    <input type="hidden" id="username_submit" name="username_submit">
-  </form>
+  <p>You're chatting as <strong name="username" id="username"></strong></p>
+  <p>Type your message:</p>
+  <input id="type-message" name="content" hx-vals='js:{author: localStorage.getItem("username")}' hx-target="#message-list" hx-post="{% url 'chat_post' %}" hx-on:keydown="event.key==='enter'">
 
   <script>
-    const username_set = localStorage.getItem("username")
+    const username = localStorage.getItem("username")
     username_field = document.getElementById("username")
-    username_field.textContent=username_set
-    username_submit = document.getElementById("username_submit")
-    username_submit.value=username_set
+    username_field.textContent=username
+    username_field.value=username
+
+    const type_message = document.getElementById("type-message")
+    type_message.addEventListener("keyup", function(e) {
+      if (e.key === 'Enter') {
+        type_message.value = ""
+      }
+    })
   </script>
 {% endblock %}

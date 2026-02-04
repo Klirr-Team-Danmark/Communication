@@ -1,0 +1,7 @@
+  {% for c in object_list %}
+    <div>
+      <span style="padding-right: 15px;">{{c.posted|date:'G:i:s'}}</span>
+      <strong>{{c.author}}:</strong>
+      {{c.content}}
+    </div>
+  {% endfor %}

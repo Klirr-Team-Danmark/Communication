@@ -13,12 +13,14 @@
   <script src="/static/custom.js"></script>
   {% block head_javascripts %}{% endblock %}
 </head>
-<body>
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
   <nav>
     <ul>
       <li><a href="{% url "index" %}">Home</a></li>
       <li><a href="{% url "decision_log" %}">Decision log</a></li>
       <li><a href="{% url "chat_join" %}">Chat room</a></li>
+    </ul>
+    <ul>
       <li>
         <img src="{% static "images/person.svg" %}">
         <a href="{% url "login" %}">Login</a>

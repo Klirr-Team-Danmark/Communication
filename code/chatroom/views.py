@@ -1,6 +1,5 @@
 from django.views.generic import ListView, TemplateView, View, CreateView
 from .models import Message
-from .forms import MessageForm
 
 class Join(TemplateView):
     template_name = "join.html"
@@ -15,24 +14,34 @@ class Main(ListView):
 
         return qs
 
+    # Technically superfluous currently
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["form"] = MessageForm()
 
         return context
 
 
 class SendMessage(CreateView):
-    template_name = "chat.html"
+    template_name = "message_list.html"
     model = Message
-
-    def get_queryset(self):
-        qs = Message.objects.all()[:50]
-
-        return qs
+    fields = ["author", "content"]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["form"] = MessageForm()
+
+        context["object_list"] = reversed(Message.objects.all()[:50])
 
         return context
+
+    # def form_valid(self, form):
+    def post(self, request, *args, **kwargs):
+        content = request.POST["content"]
+        author = request.POST["author"]
+
+        # Handle saving of data
+        #super().post(request, *args, **kwargs)
+
+        Message.objects.create(author=author, content=content)
+        response = self.get(request, *args, **kwargs)
+
+        return response

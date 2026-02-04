@@ -31,6 +31,8 @@ code/manage.py runserver
 
 # TODO
 
+Many things, but these are a few:
+
 - Use e.g. `gunicorn`/`uwsgi` instead of django's runserver, which is only for development purposes
 - Internationalisation
 - UI and UX improvements
