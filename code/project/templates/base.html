@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/static/pico.min.css" rel="stylesheet">
   <link href="/static/custom.css" rel="stylesheet" media="screen">
+  <link rel="icon" type="image/x-icon" href="{% static "images/favicon.png" %}">
   {% block stylesheets %}{% endblock %}
   <script src="/static/custom.js"></script>
   {% block head_javascripts %}{% endblock %}
@@ -18,7 +19,10 @@
       <li><a href="{% url "index" %}">Home</a></li>
       <li><a href="{% url "decision_log" %}">Decision log</a></li>
       <li><a href="{% url "chat_join" %}">Chat room</a></li>
-      <li><a href="{% url "login" %}">Login</a></li>
+      <li>
+        <img src="{% static "images/person.svg" %}">
+        <a href="{% url "login" %}">Login</a>
+      </li>
     </ul>
   </nav>
   <main>
