@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Decision log</title>
-</head>
-<body>
-HAHA
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block page_title %}Decision log{% endblock %}
+
+{% block main %}
+<ul>
+    {% for object in object_list %}
+    <li>
+        <p>{{object.created_time}}: {{object.author}} added the following entry:</p>
+        <p>{{object.content}}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% if not user.is_anonymous %}
+<h3>Add an entry</h3>
+<form method="post">
+    {% csrf_token %}
+    {{form.content}}
+    <input type="submit" value="Add entry">
+</form>
+{% endif %}
+{% endblock %}
