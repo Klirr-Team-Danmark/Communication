@@ -4,7 +4,7 @@
 <html lang="da">
 <head>
   <meta charset="utf-8">
-  <title>Public space</title>
+  <title>Communications</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/static/pico.min.css" rel="stylesheet">
   <link href="/static/custom.css" rel="stylesheet" media="screen">
@@ -16,8 +16,8 @@
   {% block javascripts %}{% endblock %}
   <nav>
     <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="{% url 'decisionlog' %}">Decision log</a></li>
+      <li><a href="{% url "index" %}">Home</a></li>
+      <li><a href="{% url "decisionlog" %}">Decision log</a></li>
       <li><a href="{% url "chat_index" %}">Chat room</a></li>
     </ul>
   </nav>
