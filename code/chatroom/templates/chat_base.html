@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block stylesheets %}
+  <link href="{% static "chat.css" %}" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block page_title %}Chat room{% endblock %}
+
+{% block late_javascripts %}
+  <script src="{% static "chat.js" %}"></script>
+{% endblock %}

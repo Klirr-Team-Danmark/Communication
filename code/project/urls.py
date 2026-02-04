@@ -23,6 +23,7 @@ from django.urls import include, path
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.Main.as_view(), name="index"),
-    path("chatroom", include("chatroom.urls")),
+    path("login", views.Login.as_view(), name="login"),
+    path("chatroom/", include("chatroom.urls")),
     path("decision_log/", include("decisionlog.urls")),
 ]

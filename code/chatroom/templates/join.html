@@ -1,0 +1,27 @@
+{% extends "chat_base.html" %}
+
+{% block page_title %}
+Join the chat room
+{% endblock %}
+
+{% block main %}
+<p>Choose your username</p>
+<form id="form">
+  <input id="username" type="text" name="username" required />
+  <button id="send_name">Join chat</button>
+</form>
+
+<script>
+  function join() {
+    username = document.getElementById("username")
+    localStorage.setItem('username', username.value);
+    window.location.replace("/chatroom/chat")
+  }
+
+  form = document.getElementById("form")
+  form.addEventListener("submit", function() { event.preventDefault(); join() })
+  el = document.getElementById("send_name")
+  el.addEventListener("click", join)
+
+</script>
+{% endblock %}

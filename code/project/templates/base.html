@@ -13,12 +13,12 @@
   {% block head_javascripts %}{% endblock %}
 </head>
 <body>
-  {% block javascripts %}{% endblock %}
   <nav>
     <ul>
       <li><a href="{% url "index" %}">Home</a></li>
       <li><a href="{% url "decisionlog" %}">Decision log</a></li>
-      <li><a href="{% url "chat_index" %}">Chat room</a></li>
+      <li><a href="{% url "chat_join" %}">Chat room</a></li>
+      <li><a href="{% url "login" %}">Login</a></li>
     </ul>
   </nav>
   <main>
@@ -27,5 +27,6 @@
     {% block main %}{% endblock %}
     <script src="/static/htmx.min.js"></script>
   </main>
+  {% block late_javascripts %}{% endblock %}
 </body>
 </html>

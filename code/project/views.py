@@ -3,3 +3,5 @@ from django.views.generic import DetailView, ListView, RedirectView, TemplateVie
 class Main(TemplateView):
     template_name = "index.html"
 
+class Login(TemplateView):
+    template_name = "login.html"
