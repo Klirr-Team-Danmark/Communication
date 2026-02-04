@@ -16,10 +16,14 @@
   <form>
     <p>Type your message:</p>
     <input name="message" hx-post="{#{% url 'file_archive_update' author.uid %}#}" hx-on:keydown="(event.keyCode===13&&!event.shiftKey)?event.preventDefault():null">
+    <input type="hidden" id="username_submit" name="username_submit">
   </form>
 
   <script>
-    username = document.getElementById("username")
-    username.textContent=localStorage.getItem("username")
+    const username_set = localStorage.getItem("username")
+    username_field = document.getElementById("username")
+    username_field.textContent=username_set
+    username_submit = document.getElementById("username_submit")
+    username_submit.value=username_set
   </script>
 {% endblock %}
