@@ -11,7 +11,7 @@ class Main(ListView):
     model = Message
 
     def get_queryset(self):
-        qs = Message.objects.all()[:50]
+        qs = reversed(Message.objects.all()[:50])
 
         return qs
 
