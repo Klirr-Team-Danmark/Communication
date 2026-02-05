@@ -14,7 +14,8 @@ Join the chat room
 <script>
   function join() {
     username = document.getElementById("username")
-    localStorage.setItem('username', username.value);
+    // max_age in seconds
+    document.cookie = `username=${username.value}; max_age=60000; path=/`
     window.location.replace("/chatroom/chat")
   }
 

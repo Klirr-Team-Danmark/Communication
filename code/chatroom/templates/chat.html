@@ -8,18 +8,24 @@
   </article>
   <p>You're chatting as <strong name="username" id="username"></strong></p>
   <p>Type your message:</p>
-  <input id="type-message" name="content" hx-vals='js:{author: localStorage.getItem("username")}' hx-target="#message-list" hx-post="{% url 'chat_post' %}" hx-on:keydown="event.key==='enter'">
+  <input id="type-message" name="content" hx-target="#message-list" hx-post="{% url 'chat_post' %}" hx-on:keydown="event.key==='enter'">
 
   <script>
-    const username = localStorage.getItem("username")
+    const username = document.cookie
+                     .split("; ")
+                     .find((row) => row.startsWith("username="))
+                     ?.split("=")[1];
     username_field = document.getElementById("username")
     username_field.textContent=username
     username_field.value=username
 
     const type_message = document.getElementById("type-message")
+    const m = document.getElementById("message-list")
     type_message.addEventListener("keyup", function(e) {
       if (e.key === 'Enter') {
         type_message.value = ""
+        // Scroll down when new messages are posted - TODO: Do the same when others post, which HTMX needs to retrieve periodically
+        m.scrollTop = m.scrollHeight
       }
     })
   </script>

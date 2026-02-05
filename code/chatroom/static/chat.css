@@ -1,5 +1,6 @@
 #message-list {
-  min-height: 68vh;
+  height: 62vh;
+  overflow: scroll;
 }
 
 #type-message {

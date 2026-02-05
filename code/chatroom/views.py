@@ -36,7 +36,7 @@ class SendMessage(CreateView):
     # def form_valid(self, form):
     def post(self, request, *args, **kwargs):
         content = request.POST["content"]
-        author = request.POST["author"]
+        author = request.COOKIES.get("username")
 
         # Handle saving of data
         #super().post(request, *args, **kwargs)
