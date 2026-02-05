@@ -1,5 +1,7 @@
 # Communications
 
+**Important note:** This repo has been modified after handing it in for the hackathon. [This commit is from 14:36 that day](https://github.com/Klirr-Team-Danmark/Communication/tree/24adf1c730c28024f020f57c7cc802b5e9da6d66), and [this one from 15:16](https://github.com/Klirr-Team-Danmark/Communication/tree/fd816e34bc917235c5d5af5b905b14771053e934).
+
 A **prototype** for a communications page for a community, which for now is focusing on:
 
 - A decision log - Where signed in users can post decisions and everyone can read them.
